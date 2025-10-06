@@ -1,6 +1,8 @@
 /**
  * @author R.Nauke
  */
+
+
 public class Program {
   public static void main(String[] args) {
     Student[] students = new Student[10];
@@ -13,9 +15,6 @@ public class Program {
     Course course = new Course("iprog");
     // System.out.println(course.getName());
     course.addStudents(students);
-    students[1].setName("fortnite");
-    System.out.println(" ");
-    course.printStudentNames();
 
     // Student s1 = new Student("Doe", "John", 123456);
     // Student s2 = new Student("Doe", "John", 234567);
