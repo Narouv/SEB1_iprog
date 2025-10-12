@@ -7,8 +7,7 @@ public class Course
 
   String name;
 
-  public void addStudents(Student[] studs)
-  {
+  public void addStudents(Student[] studs) {
     int i = 0;
     while (i < studs.length) {
       students[i] = studs[i];
@@ -25,13 +24,11 @@ public class Course
     }
   }
 
-  public String getName()
-  {
+  public String getName() {
     return this.name;
   }
   
-  public Course(String name)
-  {
+  public Course(String name) {
     this.name = name;
     this.students = new Student[10];
   }
