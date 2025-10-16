@@ -10,7 +10,7 @@ public class Picture {
       int j = 6;
       while (i > 0) {
         while (j > 0) {
-          if (i >= j){
+          if (i >= j) {
             System.out.print("*");
           }
           else{
@@ -30,7 +30,7 @@ public class Picture {
       int j = 7;
       while (i > 0) {
         while (j > 0) {
-          if (j == 0 + i || j == 7 - i + 1) {
+          if (j == i || j == 8 - i) {
             System.out.print("*");
           }
           else {
