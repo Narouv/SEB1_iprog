@@ -67,14 +67,24 @@ public class Student
     return s1.hasSameName(s2);
   }
 
+  // private String calculateChecksum(int sid) {
+  //   int sum = 0;
+  //   String og = Integer.toString(sid);
+  //   while (sid % 10 > 0) {
+  //     sum += sid % 10;
+  //     sid /= 10;
+  //   }
+  //   return og + Integer.toString(sum);
+  // }
+
   private String calculateChecksum(int sid) {
+    String str = Integer.toString(sid);
+    int i = 0;
     int sum = 0;
-    String og = Integer.toString(sid);
-    while (sid % 10 > 0) {
-      sum += sid % 10;
-      sid /= 10;
+    while (i < 6) {
+      sum += Integer.parseInt(str[i]);
     }
-    return og + Integer.toString(sum);
+    return str + sum;
   }
 
   public Student(String name, String firstname, int studentid) {

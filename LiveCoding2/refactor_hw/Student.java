@@ -63,13 +63,11 @@ public class Student
     return false;
   }
 
-  public static boolean haveSameNames(Student s1, Student s2)
-  {
+  public static boolean haveSameNames(Student s1, Student s2) {
     return s1.hasSameName(s2);
   }
 
-  public Student(String name, String firstname, int studentid)
-  {
+  public Student(String name, String firstname, int studentid) {
     this.name = name;
     this.firstName = firstname;
     this.studentId = studentid;
