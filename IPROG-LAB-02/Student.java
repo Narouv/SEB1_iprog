@@ -98,6 +98,6 @@ public class Student
     this.name = name;
     this.firstName = firstname;
     this.studentId = calculateChecksum(studentid);
-    System.out.println(this.studentId);
+    // System.out.println(this.studentId);
   }
 }

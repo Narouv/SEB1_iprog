@@ -19,7 +19,7 @@ public class Course
   public void printStudentNames() {
     int i = 0;
     while (students.length > i) {
-      System.out.println(students[i].getName());
+      System.out.println(students[i].getFirstName() + " " + students[i].getName());
       i++;
     }
   }
