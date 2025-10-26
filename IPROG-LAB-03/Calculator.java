@@ -3,6 +3,8 @@
  */
 
 public class Calculator {
+  static String[] functions = {"sum", "xor", "fact", "fib"};
+
   public static int sum(int[] numbers) {
     int ret = 0;
     int i = 0;
@@ -48,51 +50,82 @@ public class Calculator {
     }
   }
 
-  // public static boolean toBoolean(int i) {
-  //   boolean a = Boolean.toBoolean(i);
-  //   return a;
-  // }
+  public static boolean toBoolean(int i) {
+    if (i == 0)
+      return false;
+    return true;
+  }
+
+  public static boolean xor(int[] numbers) {
+    boolean result = toBoolean(numbers[0]);
+    for (int i = 1; i < numbers.length; i++) {
+      result ^= toBoolean(numbers[i]); 
+    }
+    return result;
+  }
 
   private static int[] convertInt(String[] args) {
     int[] arr = new int[args.length];
-    for (int i = 0; i < args.length; i++) {
-      arr[i] = Integer.parseInt(args[i]);
+    try {
+      for (int i = 0; i < args.length; i++) {
+        arr[i] = Integer.parseInt(args[i]);
+      }
+    }
+    catch (NumberFormatException e) {
+      System.out.println("Input cannot be parsed as int");
+      System.exit(-3);
     }
     return arr;
+  }
+
+  private static String[] copyArray(String[] args) {
+    String[] str = new String[args.length - 1];
+    for (int i = 1; i < args.length; i++) {
+      str[i - 1] = args[i];
+    }
+    return str;
   }
 
   public static void main(String[] args) {
     if (args.length < 1) {
       System.exit(-1);
     }
+    String selectedFunction = args[0].toLowerCase();
+    if (!(java.util.Arrays.asList(functions).contains(selectedFunction))) {
+      System.out.println("Function does not exist");
+      System.exit(-2);
+    }
+    String[] input = copyArray(args);
     int res;
     if (args.length > 2) {
-      if (args[0].equals("sum")) {
-        res = sum(convertInt(java.util.Arrays.copyOfRange(args, 1, args.length)));
+      if (selectedFunction.equals("sum")) {
+        res = sum(convertInt(input));
         System.out.println(res);
       }
-      else if (args[0].equals("XOR")) {
-        // res = xor();
-        // System.out.println(res);
+      else if (selectedFunction.equals("xor")) {
+        boolean bool;
+        bool = xor(convertInt(input));
+        System.out.println(bool);
+      }
+      else {
+        System.exit(-3);
       }
     }
     else if (args.length == 2) {
-      if (args[0].equals("fact")) {
+      if (selectedFunction.equals("fact")) {
         res = fact(Integer.parseInt(args[1]));
         System.out.println(res);
       }
-      else if (args[0].equals("fib")) {
+      else if (selectedFunction.equals("fib")) {
         res = fib(Integer.parseInt(args[1]));
         System.out.println(res);
+      }
+      else {
+        System.exit(-3);
       }
     }
     else {
       System.exit(-3);
     }
-    
-    // else 
-    // else {
-    //     System.exit(-2);
-    // }
   }
 }
