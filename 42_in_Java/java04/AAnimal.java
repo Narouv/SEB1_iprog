@@ -2,20 +2,18 @@
  * @author R.Nauke
  */
 
-public class Animal {
+public abstract class AAnimal {
   protected String type;
 
-  public Animal() {
+  public AAnimal() {
     this.type = "";
   }
 
-  public Animal(String _type) {
+  public AAnimal(String _type) {
     this.type = _type;
   }
 
-  public void makeSound() {
-    System.out.println("fortnite");
-  };
+  public abstract void makeSound();
 
   public String getType() {
     return this.type;

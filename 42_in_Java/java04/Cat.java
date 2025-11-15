@@ -2,12 +2,12 @@
  * @author R.Nauke
  */
 
-public class Cat extends Animal {
-  private final String name;
+public class Cat extends AAnimal {
+  private Brain brain;
 
-  public Cat(String _name) {
+  public Cat() {
     super("Cat");
-    this.name = _name;
+    this.brain = new Brain();
   }
 
   @Override
