@@ -66,3 +66,29 @@ public class RpsGame {
     return getResult(player1, player2);
   }
 }
+
+
+void list_directories(int fd, Clients& req, Statuscodes& codes, DIR* dir)
+{
+  struct dirent* dent;
+  std::string uri = req.getUri().substr(1);
+  if (uri[uri.length() - 1] != '/')
+      uri += "/";
+
+  std::ostringstream directories;
+  directories << "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Directory Listing</title>\n<body>\n<body>\n";
+  directories << "<h1>Directory Listing: " << uri << "</h1>\n<body>\n</html>\n";
+  while ((dent = readdir(dir)) != NULL) {
+    if (std::string(dent->d_name) != "." && std::string(dent->d_name) != "..") {
+      std::string link = dent->d_name;
+      if (dent->d_type == DT_DIR)
+          link += "/";
+      directories << "<a href=\"" << link << "\">" << dent->d_name << "</a><br>";
+    }
+  }
+  std::string dir_str = directories.str();
+  std::string msg = check_and_add_header(200, "text/html", ft_itos(dir_str.length()), codes, req) + dir_str;
+  if (send(fd, msg.c_str(), msg.size(), 0) < 0)
+    req.setConStatus(CLOSE);
+  closedir(dir);
+}
