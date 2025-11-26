@@ -8,12 +8,12 @@ public abstract class AForm {
   private final int signGrade;
   private final int execGrade;
 
-  public Form (String _name, int _sign, int _exec) {
+  public AForm (String _name, int _sign, int _exec) {
     if (_sign > 150 || _exec > 150) {
-      throw new Form.GradeTooLowException();
+      throw new AForm.GradeTooLowException();
     }
     if (_sign < 1 || _exec < 1) {
-      throw new Form.GradeTooHighException();
+      throw new AForm.GradeTooHighException();
     }
     this.name = _name;
     this.signGrade = _sign;
@@ -38,7 +38,7 @@ public abstract class AForm {
 
   public boolean beSigned(Bureaucrat b) {
     if (b.getGrade() > this.signGrade) {
-      throw new Form.GradeTooLowException("grade too low");
+      throw new AForm.GradeTooLowException("grade too low");
     }
     if (!signed) {
       signed = true;

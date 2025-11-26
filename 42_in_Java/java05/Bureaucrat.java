@@ -42,7 +42,7 @@ public class Bureaucrat {
     }
   }
 
-  public void signForm(Form f) {
+  public void signForm(AForm f) {
     try {
       if (f.beSigned(this)) {
         System.out.println(this.name + " signed " + f.getName());
